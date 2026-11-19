@@ -20,7 +20,7 @@ int main()
   //case2(0);
 
   //case 3 dipanggil dicase 2 mas, biar sekalian passing data
-  case2(1);
+  //case2(1);
 
   return 0;
 }
@@ -57,16 +57,19 @@ void case2(int isCase3){
     return;
   }
 
-  int mostPricey = 1;
+  int mostPricey = 0;
 
   printf("%-2s  %-11s  %-5s  %-2s\n", "No", "Nama", "Harga", "Stok");
   printf("----------------------------\n");
   for(int i = 0; i < menuCount; i++){
     Menu current = menus[i];
     printf("%-2d  %-11s  %-5d  %-2d\n", (i+1), current.name, current.price, current.stock);
+
+    //sekalian cari index termahal
+    mostPricey = current.price > menus[mostPricey].price?i:mostPricey;
   }
 
-  printf("\nMenu termahal: %s (Rp%d)\n", menus[mostPricey-1].name, menus[mostPricey-1].price);
+  printf("\nMenu termahal: %s (Rp%d)\n", menus[mostPricey].name, menus[mostPricey].price);
 
 }
 
